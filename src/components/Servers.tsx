@@ -6,10 +6,14 @@ export function Servers(props) {
   const { nodes, materials } = useGLTF(serverScene);
   return (
     <group {...props} dispose={null} rotation-y={3.15}>
-      <ambientLight intensity={0.5} color="white" />
-
-      {/* Lumière directionnelle d'en haut */}
-      <directionalLight color="white" position={[0, 10, 0]} intensity={1} />
+      <spotLight
+        position={[5, 4, 1]}
+        angle={0.4}
+        penumbra={0.5}
+        intensity={80}
+        color={"#ffffff"}
+        castShadow
+      />
       <group rotation={[-Math.PI / 2, 0, 0]}>
         <mesh
           castShadow

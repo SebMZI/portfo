@@ -1,21 +1,23 @@
 import React, { useRef } from "react";
-import { useGLTF } from "@react-three/drei";
+import { Html, useGLTF } from "@react-three/drei";
 import consoleScene from "../models/carbon_server_console.glb";
 
 export function Console(props) {
   const { nodes, materials } = useGLTF(consoleScene);
   return (
     <group {...props} dispose={null}>
-      <ambientLight intensity={0.5} color="white" />
-
-      {/* Lumière directionnelle d'en haut */}
-      <directionalLight color="white" position={[0, 10, 0]} intensity={1} />
       <group
         position={[-0.903, -1.662, 0.903]}
         rotation={[Math.PI / 2, 0, Math.PI / 2]}
         scale={0.9}
       >
         <group rotation={[-Math.PI, 0, 0]}>
+          <pointLight
+            position={[0, 0, 1]}
+            color={"blue"}
+            intensity={5}
+            distance={5}
+          />
           <mesh
             castShadow
             receiveShadow
